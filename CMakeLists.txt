@@ -60,6 +60,24 @@ install(
 
 ##END## CPP LIBRARY #####
 
+##### EXAMPLES #####
+
+add_executable(sinusoidal_force_sensor src/examples/sinusoidal_force_sensor.cpp)
+
+ament_target_dependencies(sinusoidal_force_sensor rclcpp geometry_msgs sas_common sas_core sas_conversions)
+
+target_link_libraries(sinusoidal_force_sensor
+    ${PROJECT_NAME}
+    -ldqrobotics
+    Eigen3::Eigen
+    )
+
+install(TARGETS sinusoidal_force_sensor
+    DESTINATION lib/${PROJECT_NAME}
+    )
+
+##END## EXAMPLES #####
+
 ##### PYBIND11 LIBRARY #####
 
 ament_python_install_package(${PROJECT_NAME})
