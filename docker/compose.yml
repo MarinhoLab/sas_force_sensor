@@ -1,7 +1,12 @@
 services:
   sas_force_sensor:
     build: .
+    environment:
+      - DISPLAY
+      - ROS_DOMAIN_ID
     volumes:
+      - ~/.Xauthority:/root/.Xauthority
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ../../sas_force_sensor:/root/sas_force_sensor_devel/src/sas_force_sensor
     command: /bin/bash -c "
       cd /root/sas_force_sensor_devel/src/
@@ -9,3 +14,19 @@ services:
       && colcon build
       && source install/setup.bash
       && ros2 run sas_force_sensor sas_force_sensor_interface_example.py"
+
+  sas_force_sensor_gui:
+    build: .
+    environment:
+      - DISPLAY
+      - ROS_DOMAIN_ID
+    volumes:
+      - ~/.Xauthority:/root/.Xauthority
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ../../sas_force_sensor:/root/sas_force_sensor_devel/src/sas_force_sensor
+    command: /bin/bash -c "
+      cd /root/sas_force_sensor_devel/src/
+      && ls .
+      && colcon build
+      && source install/setup.bash
+      && ros2 run sas_force_sensor sas_force_sensor_gui"
