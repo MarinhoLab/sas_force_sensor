@@ -25,7 +25,10 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ../../sas_force_sensor:/root/sas_force_sensor_devel/src/sas_force_sensor
     command: /bin/bash -c "
-      cd /root/sas_force_sensor_devel/src/
+      sudo apt-get install -y xvfb
+      && sudo /usr/bin/Xvfb :99 -screen 0 1280x1024x24 &
+      && export DISPLAY=:99
+      && cd /root/sas_force_sensor_devel/src/
       && ls .
       && colcon build
       && source install/setup.bash
