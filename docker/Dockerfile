@@ -11,3 +11,4 @@ RUN python3 -m pip install pyqtgraph PyQt6 --break-system-packages
 RUN python3 -m pip install pyqtdarktheme==2.1.0 --ignore-requires-python --break-system-packages
 RUN apt-get remove -y ros-jazzy-sas-force-sensor
 RUN mkdir -p /root/sas_force_sensor_devel/src/
+COPY . /root/sas_force_sensor_devel/src/sas_force_sensor
