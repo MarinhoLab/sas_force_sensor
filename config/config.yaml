@@ -1,0 +1,11 @@
+# Parameters for the sas_force_sensor nodes.
+#
+# Each top-level block is keyed by the ROS node name and is loaded by the
+# corresponding launch file via its `config_file` argument.
+
+# sinusoidal_force_sensor (example node)
+sinusoidal_force_sensor:
+  ros__parameters: {}
+    # The example sinusoidal force sensor declares no ROS parameters today.
+    # This block is kept so the node can be configured through the standard
+    # SmartArmStack config-file pattern once parameters are introduced.
