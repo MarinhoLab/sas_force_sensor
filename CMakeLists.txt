@@ -112,4 +112,27 @@ install(DIRECTORY
 # Scripts Block [END] #
 #######################
 
+########################
+# Launch Block [BEGIN] #
+# vvvvvvvvvvvvvvvvvvvv #
+# According to https://github.com/SmartArmStack/sas_robot_driver/blob/ros2/CMakeLists.txt
+install(DIRECTORY
+        launch
+        DESTINATION share/${PROJECT_NAME}/
+)
+# ^^^^^^^^^^^^^^^^^^ #
+# Launch Block [END] #
+######################
+
+#########################
+# Config Block [BEGIN] #
+# vvvvvvvvvvvvvvvvvvvvv #
+install(DIRECTORY
+        config
+        DESTINATION share/${PROJECT_NAME}/
+)
+# ^^^^^^^^^^^^^^^^^^^ #
+# Config Block [END] #
+#######################
+
 ament_package()

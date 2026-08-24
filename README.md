@@ -10,6 +10,32 @@
 - `src/` — library and pybind11 bindings.
 - `sas_force_sensor/` — Python package (thin wrapper around the pybind11 module).
 - `scripts/` — Python example script.
+- `launch/` — example launch file for the sinusoidal force sensor node.
+- `config/` — example parameter configuration file.
+
+## ROS 2 Nodes & Parameters
+
+The package is primarily a library. It also provides one example node.
+
+### Node: `sinusoidal_force_sensor`
+
+| Property | Value |
+|---|---|
+| **Executable** | `sinusoidal_force_sensor` |
+| **ROS node name** | `sinusoidal_force_sensor` (set by the `name` launch argument of `sinusoidal_force_sensor_launch.py`) |
+| **Description** | Example node that publishes a sinusoidal force/torque wrench on `<node_name>/get/wrench` via `ForceSensorServer`. |
+
+#### Parameters
+
+The node currently declares **no ROS parameters** — the amplitude, frequency, and tick rate are hardcoded constants in `src/examples/sinusoidal_force_sensor.cpp`.
+
+#### Sample launch
+
+```console
+ros2 launch sas_force_sensor sinusoidal_force_sensor_launch.py
+```
+
+The launch file loads the (currently empty) parameter block from `config/config.yaml` (override with `config_file:=/path/to/config.yaml`) so the node follows the standard SmartArmStack config-file pattern.
 
 ## Client–Server pair
 
