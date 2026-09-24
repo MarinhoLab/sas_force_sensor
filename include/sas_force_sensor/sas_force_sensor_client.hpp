@@ -31,7 +31,6 @@
 #include <geometry_msgs/msg/wrench_stamped.hpp>
 #include <sas_core/sas_object.hpp>
 
-using namespace rclcpp;
 using namespace DQ_robotics;
 
 namespace sas
@@ -47,12 +46,12 @@ namespace sas
 class ForceSensorClient: private sas::Object
 {
 private:
-    std::shared_ptr<Node> node_;
+    std::shared_ptr<rclcpp::Node> node_;
 
     std::atomic_bool enabled_;
     const std::string topic_prefix_;
 
-    Subscription<geometry_msgs::msg::WrenchStamped>::SharedPtr subscriber_wrench_;
+    rclcpp::Subscription<geometry_msgs::msg::WrenchStamped>::SharedPtr subscriber_wrench_;
     DQ force_;
     DQ torque_;
 
@@ -68,7 +67,7 @@ public:
      * @param topic_prefix Prefix used to compose the ROS topic name (defaults to "GET_FROM_NODE",
      *                      in which case the node name is used).
      */
-    ForceSensorClient(const std::shared_ptr<Node>& node, const std::string& topic_prefix="GET_FROM_NODE");
+    ForceSensorClient(const std::shared_ptr<rclcpp::Node>& node, const std::string& topic_prefix="GET_FROM_NODE");
 
     /**
      * @brief Check whether the client has received at least one force/torque reading.
