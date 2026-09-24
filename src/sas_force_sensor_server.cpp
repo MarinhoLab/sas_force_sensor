@@ -28,7 +28,7 @@
 namespace sas
 {
 
-ForceSensorServer::ForceSensorServer(const std::shared_ptr<Node>& node, const std::string& topic_prefix):
+ForceSensorServer::ForceSensorServer(const std::shared_ptr<rclcpp::Node>& node, const std::string& topic_prefix):
     sas::Object("sas::ForceSensorServer"),
     node_(node),
     topic_prefix_(topic_prefix == "GET_FROM_NODE"? node->get_name() : topic_prefix)

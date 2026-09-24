@@ -44,7 +44,7 @@ void ForceSensorClient::_callback_wrench(const geometry_msgs::msg::WrenchStamped
     }
 }
 
-ForceSensorClient::ForceSensorClient(const std::shared_ptr<Node>& node, const std::string& topic_prefix):
+ForceSensorClient::ForceSensorClient(const std::shared_ptr<rclcpp::Node>& node, const std::string& topic_prefix):
     sas::Object("sas::ForceSensorClient"),
     node_(node),
     enabled_(false),

@@ -37,14 +37,14 @@ class SinusoidalForceSensorNode : public rclcpp::Node
 {
 public:
     SinusoidalForceSensorNode()
-        : Node("sinusoidal_force_sensor")
+        : rclcpp::Node("sinusoidal_force_sensor")
     {
     }
 
     void attach_server()
     {
         server_ = std::make_shared<sas::ForceSensorServer>(
-            std::shared_ptr<Node>(shared_from_this()), "sinusoidal_force_sensor");
+            std::shared_ptr<rclcpp::Node>(shared_from_this()), "sinusoidal_force_sensor");
         timer_ = this->create_wall_timer(
             std::chrono::milliseconds(static_cast<int>(1000.0 / tick_rate_hz)),
             std::bind(&SinusoidalForceSensorNode::on_timer, this));
@@ -61,8 +61,8 @@ private:
         force_reading_ = value;
         torque_reading_ = value;
 
-        DQ force(Vector3d(value, 0.0, 0.0));
-        DQ torque(Vector3d(0.0, value, 0.0));
+        DQ force(Eigen::Vector3d(value, 0.0, 0.0));
+        DQ torque(Eigen::Vector3d(0.0, value, 0.0));
 
         server_->send_force_torque(force, torque);
     }
