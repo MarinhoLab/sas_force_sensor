@@ -11,9 +11,22 @@
 
   <depend>rclcpp</depend>
   <depend>geometry_msgs</depend>
+  <depend>eigen</depend>
   <depend>sas_core</depend>
   <depend>sas_common</depend>
   <depend>sas_conversions</depend>
+
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-pyqt6</exec_depend>
+  <exec_depend>python3-pyqtgraph</exec_depend>
+
+  <!-- qdarktheme (imported by sas_force_sensor/gui.py) has no rosdep key;
+       install from PyPI: pip install pyqtdarktheme.
+       dqrobotics has no rosdep key either; it comes from the DQ Robotics PPA
+       and PyPI (https://github.com/marinholab/docker_recipes). -->
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
