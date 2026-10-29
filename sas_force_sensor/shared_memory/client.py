@@ -22,8 +22,8 @@
 #
 # ################################################################
 """
-from multiprocessing import Lock
 from multiprocessing.shared_memory import ShareableList
+from multiprocessing.synchronize import Lock
 
 from sas_force_sensor.shared_memory.common import shared_memory_map
 
