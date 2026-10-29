@@ -22,7 +22,4 @@
 #
 # ################################################################
 """
-from sas_force_sensor._sas_force_sensor import (
-    ForceSensorServer,
-    ForceSensorClient
-)
+from sas_force_sensor._sas_force_sensor import ForceSensorClient, ForceSensorServer

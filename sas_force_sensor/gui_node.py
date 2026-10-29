@@ -22,18 +22,18 @@
 #
 # ################################################################
 """
-import time
 import multiprocessing as mp
 import multiprocessing.managers as mm
-import numpy as np
+import time
 
+import numpy as np
 from dqrobotics import *  # noqa: F401, F403 - required for DQ type recognition
 
 from sas_common import (
     rclcpp_init,
     rclcpp_Node,
-    rclcpp_spin_some,
     rclcpp_shutdown,
+    rclcpp_spin_some,
 )
 from sas_force_sensor import ForceSensorClient
 from sas_force_sensor.shared_memory.server import ForceSensorSharedMemoryServer

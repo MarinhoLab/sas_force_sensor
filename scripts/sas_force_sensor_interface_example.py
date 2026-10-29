@@ -24,10 +24,11 @@
 # #######################################################################################
 """
 import time
+
 from dqrobotics import *  # Despite what PyCharm might say, this is very much necessary or DQs will not be recognized
 
-from sas_common import rclcpp_init, rclcpp_Node, rclcpp_spin_some, rclcpp_shutdown
-from sas_force_sensor import ForceSensorServer, ForceSensorClient
+from sas_common import rclcpp_init, rclcpp_Node, rclcpp_shutdown, rclcpp_spin_some
+from sas_force_sensor import ForceSensorClient, ForceSensorServer
 
 
 def main(args=None):

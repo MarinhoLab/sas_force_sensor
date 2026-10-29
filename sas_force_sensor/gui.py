@@ -25,20 +25,18 @@
 from queue import Queue
 
 import numpy as np
-
-from PyQt6.QtCore import QTimer, Qt, QCoreApplication
+import pyqtgraph as pg
+import qdarktheme
+from PyQt6.QtCore import QCoreApplication, Qt, QTimer
 from PyQt6.QtWidgets import (
-    QWidget,
     QApplication,
+    QHBoxLayout,
+    QLabel,
     QMainWindow,
     QSlider,
-    QHBoxLayout,
     QVBoxLayout,
-    QLabel,
+    QWidget,
 )
-
-import qdarktheme
-import pyqtgraph as pg
 
 from sas_force_sensor.shared_memory.client import ForceSensorSharedMemoryClient
 
@@ -171,11 +169,11 @@ class ForceSensorMainWindow(QMainWindow):
                                             self.data_tz, self.tz_lims, t[2], "tz")
 
                 self.force_slider.set_value(int(f_norm))
-                self.force_slider.set_text('{:.2f}'.format(f_norm))
+                self.force_slider.set_text(f'{f_norm:.2f}')
 
                 t_norm = np.linalg.norm(t)
                 self.torque_slider.set_value(int(t_norm))
-                self.torque_slider.set_text('{:.2f}'.format(t_norm))
+                self.torque_slider.set_text(f'{t_norm:.2f}')
 
             if self.shared_memory_client.get_shutdown_flag():
                 QCoreApplication.quit()
