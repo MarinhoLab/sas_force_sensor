@@ -135,4 +135,14 @@ install(DIRECTORY
 # Config Block [END] #
 #######################
 
+#############################
+# Test Block [BEGIN] #
+if(BUILD_TESTING)
+  find_package(ament_cmake_pytest REQUIRED)
+  ament_add_pytest_test(test_force_sensor test/test_force_sensor.py TIMEOUT 120)
+endif()
+#   Test Block [END]   #
+#############################
+
+
 ament_package()

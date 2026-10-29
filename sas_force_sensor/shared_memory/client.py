@@ -30,7 +30,7 @@ from sas_force_sensor.shared_memory.common import shared_memory_map
 
 class ForceSensorSharedMemoryClient:
     def __init__(self,
-                 shared_memory_lists_tuple: ShareableList,
+                 shared_memory_lists_tuple: tuple[ShareableList, ShareableList],
                  lock: Lock):
         self.connection_information_dict = shared_memory_map
         self.connection_information, \
@@ -39,7 +39,8 @@ class ForceSensorSharedMemoryClient:
 
     def get_wrench(self):
         self.lock.acquire()
-        wrench = list(self.shareable_wrench)
+        wrench = [self.shareable_wrench[i]
+                  for i in range(len(self.shareable_wrench))]
         self.lock.release()
         return wrench
 
