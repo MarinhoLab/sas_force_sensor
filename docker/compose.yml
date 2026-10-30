@@ -14,6 +14,8 @@ services:
       && ls .
       && colcon build
       && source install/setup.bash
+      && colcon test
+      && colcon test-result
       && ros2 run sas_force_sensor sas_force_sensor_interface_example.py"
 
   sas_force_sensor_gui:
