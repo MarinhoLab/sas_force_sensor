@@ -11,8 +11,6 @@ jobs:
         with:
           submodules: true
 
-      - name: apt update
-        run: sudo apt-get update && sudo apt-get upgrade -y
 
       - name: build
         run: |
