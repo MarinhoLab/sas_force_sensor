@@ -43,7 +43,7 @@ namespace sas
  * published by a `sas::ForceSensorServer` and exposes the latest force and
  * torque readings as dqrobotics `DQ` (pure quaternion) objects.
  */
-class ForceSensorClient: private sas::Object
+class ForceSensorClient : private sas::Object
 {
 private:
     std::shared_ptr<rclcpp::Node> node_;
@@ -56,6 +56,7 @@ private:
     DQ torque_;
 
     void _callback_wrench(const geometry_msgs::msg::WrenchStamped& msg);
+
 public:
     ForceSensorClient() = delete;
     ForceSensorClient(const ForceSensorClient&) = delete;
@@ -67,7 +68,7 @@ public:
      * @param topic_prefix Prefix used to compose the ROS topic name (defaults to "GET_FROM_NODE",
      *                      in which case the node name is used).
      */
-    ForceSensorClient(const std::shared_ptr<rclcpp::Node>& node, const std::string& topic_prefix="GET_FROM_NODE");
+    ForceSensorClient(const std::shared_ptr<rclcpp::Node>& node, const std::string& topic_prefix = "GET_FROM_NODE");
 
     /**
      * @brief Check whether the client has received at least one force/torque reading.
@@ -100,4 +101,4 @@ public:
     std::string get_topic_prefix() const;
 };
 
-}
+}  // namespace sas

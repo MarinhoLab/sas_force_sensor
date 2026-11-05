@@ -31,23 +31,19 @@ const double amplitude = 2.0;
 const double frequency_hz = 25.0;
 const double tick_rate_hz = 100.0;
 const double angular_frequency = 2.0 * M_PI * frequency_hz;
-}
+}  // namespace
 
 class SinusoidalForceSensorNode : public rclcpp::Node
 {
 public:
-    SinusoidalForceSensorNode()
-        : rclcpp::Node("sinusoidal_force_sensor")
-    {
-    }
+    SinusoidalForceSensorNode() : rclcpp::Node("sinusoidal_force_sensor") {}
 
     void attach_server()
     {
-        server_ = std::make_shared<sas::ForceSensorServer>(
-            std::shared_ptr<rclcpp::Node>(shared_from_this()), "sinusoidal_force_sensor");
-        timer_ = this->create_wall_timer(
-            std::chrono::milliseconds(static_cast<int>(1000.0 / tick_rate_hz)),
-            std::bind(&SinusoidalForceSensorNode::on_timer, this));
+        server_ = std::make_shared<sas::ForceSensorServer>(std::shared_ptr<rclcpp::Node>(shared_from_this()),
+                                                           "sinusoidal_force_sensor");
+        timer_ = this->create_wall_timer(std::chrono::milliseconds(static_cast<int>(1000.0 / tick_rate_hz)),
+                                         std::bind(&SinusoidalForceSensorNode::on_timer, this));
 
         RCLCPP_INFO(this->get_logger(), "Sinusoidal force sensor node started.");
     }

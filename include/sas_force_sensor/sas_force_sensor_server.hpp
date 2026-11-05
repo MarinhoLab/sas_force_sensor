@@ -42,7 +42,7 @@ namespace sas
  * Any number of `sas::ForceSensorClient` instances can subscribe to that topic
  * to retrieve the latest reading.
  */
-class ForceSensorServer: private sas::Object
+class ForceSensorServer : private sas::Object
 {
 private:
     std::shared_ptr<rclcpp::Node> node_;
@@ -50,6 +50,7 @@ private:
     const std::string topic_prefix_;
 
     rclcpp::Publisher<geometry_msgs::msg::WrenchStamped>::SharedPtr publisher_wrench_;
+
 public:
     ForceSensorServer() = delete;
     ForceSensorServer(const ForceSensorServer&) = delete;
@@ -61,7 +62,7 @@ public:
      * @param topic_prefix Prefix used to compose the ROS topic name (defaults to "GET_FROM_NODE",
      *                      in which case the node name is used).
      */
-    ForceSensorServer(const std::shared_ptr<rclcpp::Node>& node, const std::string& topic_prefix="GET_FROM_NODE");
+    ForceSensorServer(const std::shared_ptr<rclcpp::Node>& node, const std::string& topic_prefix = "GET_FROM_NODE");
 
     /**
      * @brief Publish the current force/torque reading.
@@ -79,4 +80,4 @@ public:
     std::string get_topic_prefix() const;
 };
 
-}
+}  // namespace sas

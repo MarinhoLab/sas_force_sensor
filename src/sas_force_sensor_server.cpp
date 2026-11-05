@@ -28,12 +28,12 @@
 namespace sas
 {
 
-ForceSensorServer::ForceSensorServer(const std::shared_ptr<rclcpp::Node>& node, const std::string& topic_prefix):
-    sas::Object("sas::ForceSensorServer"),
-    node_(node),
-    topic_prefix_(topic_prefix == "GET_FROM_NODE"? node->get_name() : topic_prefix)
+ForceSensorServer::ForceSensorServer(const std::shared_ptr<rclcpp::Node>& node, const std::string& topic_prefix)
+    : sas::Object("sas::ForceSensorServer"),
+      node_(node),
+      topic_prefix_(topic_prefix == "GET_FROM_NODE" ? node->get_name() : topic_prefix)
 {
-    RCLCPP_INFO_STREAM(node_->get_logger(),"::Initializing "+get_class_name()+" with prefix " + topic_prefix_);
+    RCLCPP_INFO_STREAM(node_->get_logger(), "::Initializing " + get_class_name() + " with prefix " + topic_prefix_);
 
     publisher_wrench_ = node->create_publisher<geometry_msgs::msg::WrenchStamped>(topic_prefix_ + "/get/wrench", 1);
 }
@@ -48,4 +48,4 @@ std::string ForceSensorServer::get_topic_prefix() const
     return topic_prefix_;
 }
 
-}
+}  // namespace sas
