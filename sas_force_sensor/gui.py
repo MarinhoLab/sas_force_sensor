@@ -54,12 +54,12 @@ class SliderLabelVertical(QWidget):
         self.slider = QSlider(Qt.Orientation.Vertical)
         self.slider.setRange(slider_range[0], slider_range[1])
 
-        self.layout = QVBoxLayout()
-        self.layout.addWidget(self.description_label)
-        self.layout.addWidget(self.value_label)
-        self.layout.addWidget(self.slider)
+        self.widget_layout = QVBoxLayout()
+        self.widget_layout.addWidget(self.description_label)
+        self.widget_layout.addWidget(self.value_label)
+        self.widget_layout.addWidget(self.slider)
 
-        self.setLayout(self.layout)
+        self.setLayout(self.widget_layout)
 
     def set_value(self, value):
         self.slider.setValue(value)
@@ -82,7 +82,7 @@ class ForceSensorMainWindow(QMainWindow):
         self.timer_.start(1)
 
         self.central_widget = QWidget()
-        self.layout = QHBoxLayout(self)
+        self.widget_layout = QHBoxLayout(self)
 
         self.force_slider = SliderLabelVertical("Force Norm", (-300, 300), self)
         self.torque_slider = SliderLabelVertical("Torque Norm", (-300, 300), self)
@@ -123,12 +123,12 @@ class ForceSensorMainWindow(QMainWindow):
         self.torque_plot_layout.addWidget(self.plot_ty)
         self.torque_plot_layout.addWidget(self.plot_tz)
 
-        self.layout.addWidget(self.force_slider)
-        self.layout.addWidget(self.torque_slider)
-        self.layout.addLayout(self.force_plot_layout)
-        self.layout.addLayout(self.torque_plot_layout)
+        self.widget_layout.addWidget(self.force_slider)
+        self.widget_layout.addWidget(self.torque_slider)
+        self.widget_layout.addLayout(self.force_plot_layout)
+        self.widget_layout.addLayout(self.torque_plot_layout)
 
-        self.central_widget.setLayout(self.layout)
+        self.central_widget.setLayout(self.widget_layout)
         self.setCentralWidget(self.central_widget)
 
     # ------------------------------------------------------------------ helpers
